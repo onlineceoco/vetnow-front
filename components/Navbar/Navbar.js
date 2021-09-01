@@ -1,75 +1,144 @@
-import React, {useState, useEffect} from 'react'
-import {FaBars, FaWindows} from 'react-icons/fa'
-import { Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavBtnLink, NavBtn  } from './NavbarElements';
-import { IconContext } from 'react-icons/lib';
-import {animateScroll as scroll } from 'react-scroll';
-import  Link  from 'next/link';
+import React, { useState, useEffect } from "react";
+import { FaBars, FaWindows } from "react-icons/fa";
+import {
+  Nav,
+  NavbarContainer,
+  NavLogo,
+  MobileIcon,
+  NavMenu,
+  NavItem,
+  NavLinks,
+  NavBtnLink,
+  NavBtn,
+} from "./NavbarElements";
+import { IconContext } from "react-icons/lib";
+import { animateScroll as scroll } from "react-scroll";
+import Link from "next/link";
+import { useSelector } from "react-redux";
 
-const Navbar = ({toggle}) => {
-    const [scrollNav, setScrolNav] = useState(false);
+const Navbar = ({ toggle }) => {
+  const [scrollNav, setScrolNav] = useState(false);
+  const authState = useSelector(state => state.auth);
+  const changeNav = () => {
+    if (FaWindows.scrolly >= 80) {
+      setScrolNav(true);
+    } else {
+      setScrolNav(false);
+    }
+  };
 
-    const changeNav = () => {
-        if (FaWindows.scrolly >= 80) {
-            setScrolNav(true)
-        } else {
-            setScrolNav(false)
-        }
-    };
+  useEffect(() => {
+    window.addEventListener("scroll", changeNav);
+  }, []);
 
-    useEffect(() => {
-        window.addEventListener('scroll', changeNav)
-    }, []);
+  const toggleHome = () => {
+    scroll.scrollToTop();
+  };
 
-    const toggleHome = () => {
-        scroll.scrollToTop();
-    };
-
-    return (
-      <>
-      <IconContext.Provider value={{ color: 'red'}}>
+  return (
+    <>
+      <IconContext.Provider value={{ color: "red" }}>
         <Nav scrollNav={scrollNav}>
-            <NavbarContainer>
+          <NavbarContainer>
+            {!authState.isAuthenticated ? (
+              <NavBtn>
+                <Link href="/login">
+                  {<NavBtnLink> ثبت نام / ورود </NavBtnLink>}
+                </Link>
+              </NavBtn>
+            ) : (
+              <>
                 <NavBtn>
-                    <Link href='/login'>{<NavBtnLink > ثبت نام / ورود </NavBtnLink>}</Link>
+                  <Link href="/me/dashboard">
+                    {<NavBtnLink> داشبورد </NavBtnLink>}
+                  </Link>
                 </NavBtn>
-                
-                
-                <MobileIcon onClick={toggle} >
-                    <FaBars style={{color:`#fff`}} />
-                </MobileIcon>
-                <NavMenu>
-                
-                
-                <NavItem>
-                        <NavLinks to='home' smooth={true} duration={1000} spy={true} exact='true' offset={-80} activeClass='active' >صفحه اصلی</NavLinks>
-                    </NavItem>
+              </>
+            )}
 
-                    <NavItem>
-                        <NavLinks to='services' smooth={true} duration={1000} spy={true} exact='true' offset={-80} activeClass='active'>خدمات</NavLinks>
-                    </NavItem>
+            <MobileIcon onClick={toggle}>
+              <FaBars style={{ color: `#fff` }} />
+            </MobileIcon>
+            <NavMenu>
+              <NavItem>
+                <NavLinks
+                  to="home"
+                  smooth={true}
+                  duration={1000}
+                  spy={true}
+                  exact="true"
+                  offset={-80}
+                  activeClass="active"
+                >
+                  صفحه اصلی
+                </NavLinks>
+              </NavItem>
 
-                    <NavItem>
-                        <NavLinks to='products'
-                           smooth={true} duration={1000} spy={true} exact='true' offset={-80} activeClass='active'>محصولات</NavLinks>
-                    </NavItem>
+              <NavItem>
+                <NavLinks
+                  to="services"
+                  smooth={true}
+                  duration={1000}
+                  spy={true}
+                  exact="true"
+                  offset={-80}
+                  activeClass="active"
+                >
+                  خدمات
+                </NavLinks>
+              </NavItem>
 
-                    <NavItem>
-                        <NavLinks to='automation'
-                        smooth={true} duration={1000} spy={true} exact='true' offset={-80} activeClass='active'> اتوماسیون</NavLinks>
-                    </NavItem><NavItem>
-                        <NavLinks to='about'
-                        smooth={true} duration={1000} spy={true} exact='true' offset={-80} activeClass='active'> درباره ما</NavLinks>
-                    </NavItem>
-                    
-                    
-                    
-                </NavMenu>
-                <Link href="/" >{<NavLogo  onClick={toggleHome}>  Vet NOW </NavLogo>}</Link>
-            </NavbarContainer>
+              <NavItem>
+                <NavLinks
+                  to="products"
+                  smooth={true}
+                  duration={1000}
+                  spy={true}
+                  exact="true"
+                  offset={-80}
+                  activeClass="active"
+                >
+                  محصولات
+                </NavLinks>
+              </NavItem>
+
+              <NavItem>
+                <NavLinks
+                  to="automation"
+                  smooth={true}
+                  duration={1000}
+                  spy={true}
+                  exact="true"
+                  offset={-80}
+                  activeClass="active"
+                >
+                  {" "}
+                  اتوماسیون
+                </NavLinks>
+              </NavItem>
+              <NavItem>
+                <NavLinks
+                  to="about"
+                  smooth={true}
+                  duration={1000}
+                  spy={true}
+                  exact="true"
+                  offset={-80}
+                  activeClass="active"
+                >
+                  {" "}
+                  درباره ما
+                </NavLinks>
+              </NavItem>
+            </NavMenu>
+            <Link href="/">
+              {<NavLogo onClick={toggleHome}> Vet NOW </NavLogo>}
+            </Link>
+          </NavbarContainer>
         </Nav>
-        </IconContext.Provider>
-      </>
-    );
+      </IconContext.Provider>
+    </>
+  );
 };
 
 export default Navbar;

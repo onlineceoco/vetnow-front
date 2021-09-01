@@ -2,8 +2,74 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./Dashboard.module.css";
 import { IoPerson } from "react-icons/io5";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../redux/actions/auth.action";
 
 export default function Layout(props) {
+  const authState = useSelector(state => state.auth);
+  const dispatch = useDispatch();
+  console.log(authState);
+
+  const handelLogout = () => {
+    dispatch(logout());
+  };
+
+  const showDashboardLinks = () => {
+    if (authState.user.role === "doctor") {
+      return (
+        <>
+          <li className={styles.link}>
+            <IoPerson size={30} className={styles.sidebarIcons} />
+            <Link href="dashboard/join-chat">شروع چت</Link>
+          </li>
+          <li className={styles.link}>
+            <IoPerson size={30} className={styles.sidebarIcons} />
+            <Link href="/s">اطلاعات حساب</Link>
+          </li>
+          <hr className={styles.hr} />
+          <li className={styles.link}>
+            <IoPerson size={30} className={styles.sidebarIcons} />
+            <a style={{ cursor: "pointer" }} onClick={handelLogout}>
+              خروج
+            </a>
+          </li>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <li className={styles.link}>
+            <IoPerson size={30} className={styles.sidebarIcons} />
+            <Link href="/s">اطلاعات حساب</Link>
+          </li>
+          <li className={styles.link}>
+            <IoPerson size={30} className={styles.sidebarIcons} />
+            <Link href="/s">کیف پول</Link>
+          </li>
+          <li className={styles.link}>
+            <IoPerson size={30} className={styles.sidebarIcons} />
+            <Link href="/s">سفارش های من</Link>
+          </li>
+          <li className={styles.link}>
+            <IoPerson size={30} className={styles.sidebarIcons} />
+            <Link href="/s">علاقه مندی ها</Link>
+          </li>
+          <li className={styles.link}>
+            <IoPerson size={30} className={styles.sidebarIcons} />
+            <Link href="/s">آدرس ها</Link>
+          </li>
+          <hr className={styles.hr} />
+          <li className={styles.link}>
+            <IoPerson size={30} className={styles.sidebarIcons} />
+            <a style={{ cursor: "pointer" }} onClick={handelLogout}>
+              خروج
+            </a>
+          </li>
+        </>
+      );
+    }
+  };
+
   return (
     <>
       <div className={styles.container}>
@@ -18,34 +84,7 @@ export default function Layout(props) {
               height="150"
             />
           </div>
-          <ul className={styles.linkList}>
-            {/* eslint-disable-next-line @next/next/link-passhref */}
-            <li className={styles.link}>
-              <IoPerson size={30} className={styles.sidebarIcons} />
-              <Link href="dashboard/join-chat">شروع چت</Link>
-            </li>
-            <li className={styles.link}>
-              <IoPerson size={30} className={styles.sidebarIcons} />
-              <Link href="/s">اطلاعات حساب</Link>
-            </li>
-            <li className={styles.link}>
-              <IoPerson size={30} className={styles.sidebarIcons} />
-              <Link href="/s">اطلاعات حساب</Link>
-            </li>
-            <li className={styles.link}>
-              <IoPerson size={30} className={styles.sidebarIcons} />
-              <Link href="/s">اطلاعات حساب</Link>
-            </li>
-            <li className={styles.link}>
-              <IoPerson size={30} className={styles.sidebarIcons} />
-              <Link href="/s">اطلاعات حساب</Link>
-            </li>
-            <hr className={styles.hr} />
-            <li className={styles.link}>
-              <IoPerson size={30} className={styles.sidebarIcons} />
-              <Link href="/s">خروج</Link>
-            </li>
-          </ul>
+          <ul className={styles.linkList}>{showDashboardLinks()}</ul>
         </div>
         <main className={styles.main}>{props.children}</main>
       </div>
