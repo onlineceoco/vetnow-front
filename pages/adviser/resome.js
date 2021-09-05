@@ -29,8 +29,9 @@ function Resome({ doctors, rooms }) {
           count === index && (
             <Fragment key={doctor._id}>
               <div className={classes.control}>
-                <div className={classes.pic}>
+                <div className={classes.sidebarImage}>
                   <Image
+                    className={classes.sidebarImage}
                     src="https://www.esafety.gov.au/sites/default/files/2019-07/protect_your_personal_information_0.jpg"
                     alt=""
                     layout="fixed"

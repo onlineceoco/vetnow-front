@@ -17,19 +17,11 @@
   padding: 3rem 10px 20px 10px;
 }
 
-.pic {
-  width: 200px;
-  height: 200px;
-  background: white;
+.sidebarImage {
   border-radius: 50%;
-}
-
-.pic img {
-  width: 100%;
-  border-radius: 50%;
+  margin-top: 1rem;
   object-fit: contain;
 }
-
 .name {
   color: #d38c3c;
   margin: 6rem 0;
