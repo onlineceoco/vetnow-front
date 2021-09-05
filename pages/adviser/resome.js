@@ -4,6 +4,9 @@ import setAuthToken from "../../helpers/axiosInstance";
 import { api } from "../../helpers/UrlConfig";
 import classes from "./resome.module.css";
 import Link from "next/link";
+import { Fragment } from "react";
+import nookies from "nookies";
+
 function Resome({ doctors, rooms }) {
   const [count, setCount] = useState(0);
   const doctorsLength = doctors.length;
@@ -23,7 +26,7 @@ function Resome({ doctors, rooms }) {
         );
         return (
           count === index && (
-            <>
+            <Fragment key={doctor._id}>
               <div className={classes.control}>
                 <div className={classes.pic}>
                   <img
@@ -69,7 +72,7 @@ function Resome({ doctors, rooms }) {
                   </div>
                 </div>
               </div>
-            </>
+            </Fragment>
           )
         );
       })}
@@ -78,11 +81,8 @@ function Resome({ doctors, rooms }) {
 }
 
 export async function getServerSideProps(ctx) {
-  const [tokenStr] = ctx.req.headers.cookie.split(" ").filter(str => {
-    return str.includes("jwt");
-  });
-  const token = tokenStr.split("=")[1];
-  const setAuthTokenToHeader = setAuthToken(token);
+  const token = nookies.get(ctx);
+  const setAuthTokenToHeader = setAuthToken(token.jwt);
   const res = await setAuthTokenToHeader.get(`${api}users/doctors`);
   const roomsRequest = await setAuthTokenToHeader.get(`${api}chat`);
   return { props: { doctors: res.data.data, rooms: roomsRequest.data.data } };
