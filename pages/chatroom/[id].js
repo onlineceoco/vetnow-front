@@ -27,7 +27,7 @@ function Chatroom() {
     socket.emit("chatroomMessage", { message, roomId }, () => setMessage(""));
   };
   useEffect(() => {
-    const socket = io("http://localhost:8001", {
+    const socket = io("https://api.vetnow.ir", {
       auth: { token },
       transports: ["websocket", "polling", "flashsocket"],
     });
