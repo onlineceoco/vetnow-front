@@ -41,8 +41,7 @@
 }
 .formLabel {
   font-size: 0.786rem;
-  margin-right: 0.4rem;
-  margin-bottom: 0.4rem;
+  margin: 0.4rem 0.4rem 0.4rem 0;
 }
 .input {
   border: 1px solid #e0e0e2;

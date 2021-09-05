@@ -8,23 +8,23 @@ import { baseUrl } from "../../../helpers/UrlConfig";
 import WithAuth from "../../../components/HOC/withAuth";
 import { useRouter } from "next/router";
 import nookies from "nookies";
+import Sidebar from "../../../components/Sidebar/Sidebar";
+import Navbar from "../../../components/Navbar/Navbar";
 
 function CreateChatroom({ cookies }) {
   const [chatroomName, setChatroomName] = useState("");
   const [room, setRoom] = useState();
   const router = useRouter();
-  // const token = cookies.jwt;
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  };
   let token;
   const authState = useSelector(state => state.auth);
   if (typeof window !== "undefined") {
     token = localStorage.getItem("token");
   }
-  // useEffect(() => {
-  //   const socket = io(baseUrl, {
-  //     auth: { token },
-  //     transports: ["websocket", "polling", "flashsocket"],
-  //   });
-  // }, []);
 
   const getRooms = async () => {
     try {
@@ -33,9 +33,7 @@ function CreateChatroom({ cookies }) {
         const res = await axiosWithTokenHeader.get(`chat`);
         setRoom(res.data.data);
       }
-    } catch (e) {
-      console.log(e, "room");
-    }
+    } catch (e) {}
   };
 
   useEffect(() => {
@@ -51,9 +49,7 @@ function CreateChatroom({ cookies }) {
         user: authState.user._id,
       });
       getRooms();
-    } catch (e) {
-      console.log(e, "createChatroom");
-    }
+    } catch (e) {}
   };
 
   const handelJoinRoom = (id, name) => {
@@ -64,45 +60,48 @@ function CreateChatroom({ cookies }) {
   if (room) {
     roomForCurrentDoc = room.filter(rm => rm.user === authState.user._id);
   }
-  console.log(roomForCurrentDoc);
   return (
-    <Layout>
-      <div className={classes.container}>
-        <div className={classes.card}>
-          {roomForCurrentDoc.length > 0 ? (
-            <div>
-              <p className={classes.roomName}>{roomForCurrentDoc[0].name}</p>
-              <button
-                className={classes.join}
-                onClick={() =>
-                  handelJoinRoom(
-                    roomForCurrentDoc[0]._id,
-                    roomForCurrentDoc[0].name,
-                  )
-                }
-              >
-                ورود به چت روم
-              </button>
-            </div>
-          ) : (
-            <form onSubmit={handelCreateChatroomSubmit}>
-              <p className={classes.roomName}>ایجاد چت روم</p>
-              <div className={classes.createRoom}>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="نام چت روم را وارد کنید"
-                  onChange={e => setChatroomName(e.target.value)}
-                />
-                <button type="submit" className={classes.join}>
-                  ایجاد
+    <>
+      <Sidebar isOpen={isOpen} toggle={toggle} />
+      <Navbar toggle={toggle} />
+      <Layout>
+        <div className={classes.container}>
+          <div className={classes.card}>
+            {roomForCurrentDoc.length > 0 ? (
+              <div>
+                <p className={classes.roomName}>{roomForCurrentDoc[0].name}</p>
+                <button
+                  className={classes.join}
+                  onClick={() =>
+                    handelJoinRoom(
+                      roomForCurrentDoc[0]._id,
+                      roomForCurrentDoc[0].name,
+                    )
+                  }
+                >
+                  ورود به چت روم
                 </button>
               </div>
-            </form>
-          )}
+            ) : (
+              <form onSubmit={handelCreateChatroomSubmit}>
+                <p className={classes.roomName}>ایجاد چت روم</p>
+                <div className={classes.createRoom}>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="نام چت روم را وارد کنید"
+                    onChange={e => setChatroomName(e.target.value)}
+                  />
+                  <button type="submit" className={classes.join}>
+                    ایجاد
+                  </button>
+                </div>
+              </form>
+            )}
+          </div>
         </div>
-      </div>
-    </Layout>
+      </Layout>
+    </>
   );
 }
 

@@ -9,10 +9,15 @@
   font-size: 1.143rem;
   font-weight: 500;
 }
+.headerText {
+  border-bottom: #232f3e 2px solid;
+  padding-bottom: 5px;
+}
+
 .container {
   display: flex;
   justify-content: space-between;
-  margin: 1.3rem 0;
+  margin: 1.5rem 0;
 }
 
 .rightBox {
@@ -48,4 +53,3 @@
   color: #81858b;
   margin-bottom: 1rem;
 }
-

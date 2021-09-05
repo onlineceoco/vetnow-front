@@ -82,7 +82,6 @@ export const resetPaswword = phone => {
   return async dispatch => {
     try {
       const res = await axiosInstance.post(`users/signup-login?phone=${phone}`);
-      console.log(res);
 
       dispatch({
         type: authConstants.SIGNUP_LOGIN_SUCCESS,

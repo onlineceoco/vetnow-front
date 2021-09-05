@@ -52,7 +52,9 @@ function Profile({ user }) {
       <Navbar toggle={toggle} />
       <Layout>
         <div className={classes.card}>
-          <div className={classes.header}>اطلاعات شخصی</div>
+          <div className={classes.header}>
+            <span className={classes.headerText}>اطلاعات شخصی</span>
+          </div>
           <div className={classes.container}>
             <div className={classes.rightBox}>
               <div className={classes.row}>
@@ -177,10 +179,7 @@ export async function getServerSideProps(context) {
         props: { user: user.data.user },
       };
     }
-  } catch (e) {
-    console.log(e.response);
-    console.log("hi");
-  }
+  } catch (e) {}
 }
 
 export default Profile;

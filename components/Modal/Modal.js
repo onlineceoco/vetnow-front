@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Fragment } from "react";
 import setAuthToken from "../../helpers/axiosInstance";
+import Alert from "../Alert/Alert";
 import classes from "./Modal.module.css";
 function Modal({ handleCloseModal, title, inputs, info }) {
   const [data, setData] = useState(info ? info : null);
+  const [error, setError] = useState(null);
   const handleSubmit = async e => {
     e.preventDefault();
     const token = localStorage.getItem("token");
@@ -14,6 +16,7 @@ function Modal({ handleCloseModal, title, inputs, info }) {
       handleCloseModal();
     } catch (e) {
       console.log(e.response);
+      setError(e.response.data.message);
     }
   };
 
@@ -31,6 +34,7 @@ function Modal({ handleCloseModal, title, inputs, info }) {
           {inputs.map(input => {
             return (
               <Fragment key={input.name}>
+                {error && <Alert error={error} kind="danger" />}
                 <label className={classes.formLabel} htmlFor={input.name}>
                   {input.label}
                 </label>

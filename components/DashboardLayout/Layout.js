@@ -23,7 +23,7 @@ export default function Layout(props) {
           </li>
           <li className={styles.link}>
             <IoPerson size={30} className={styles.sidebarIcons} />
-            <Link href="dashboard/join-chat">شروع چت</Link>
+            <Link href="/me/dashboard/join-chat">شروع چت</Link>
           </li>
           <li className={styles.link}>
             <IoPerson size={30} className={styles.sidebarIcons} />

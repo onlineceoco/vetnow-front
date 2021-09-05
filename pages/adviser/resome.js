@@ -32,7 +32,7 @@ function Resome({ doctors, rooms }) {
                   />
                 </div>
                 <div className={classes.name}>
-                  <span>{doctor.phone}</span>
+                  <span>{doctor.name ? doctor.name : doctor.phone}</span>
                 </div>
                 <div className={classes.btnGroup}>
                   <button className={classes.btn}>پرداخت ویزیت</button>
