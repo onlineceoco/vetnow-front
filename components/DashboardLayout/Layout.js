@@ -8,23 +8,26 @@ import { logout } from "../../redux/actions/auth.action";
 export default function Layout(props) {
   const authState = useSelector(state => state.auth);
   const dispatch = useDispatch();
-  console.log(authState);
 
   const handelLogout = () => {
     dispatch(logout());
   };
 
   const showDashboardLinks = () => {
-    if (authState.user.role === "doctor") {
+    if (authState.user && authState.user.role === "doctor") {
       return (
         <>
+          <li className={styles.link}>
+            <IoPerson size={30} className={styles.sidebarIcons} />
+            <Link href="/me/dashboard">داشبورد</Link>
+          </li>
           <li className={styles.link}>
             <IoPerson size={30} className={styles.sidebarIcons} />
             <Link href="dashboard/join-chat">شروع چت</Link>
           </li>
           <li className={styles.link}>
             <IoPerson size={30} className={styles.sidebarIcons} />
-            <Link href="/s">اطلاعات حساب</Link>
+            <Link href="/me/dashboard/profile">اطلاعات حساب</Link>
           </li>
           <hr className={styles.hr} />
           <li className={styles.link}>
@@ -40,7 +43,11 @@ export default function Layout(props) {
         <>
           <li className={styles.link}>
             <IoPerson size={30} className={styles.sidebarIcons} />
-            <Link href="/s">اطلاعات حساب</Link>
+            <Link href="/me/dashboard">داشبورد</Link>
+          </li>
+          <li className={styles.link}>
+            <IoPerson size={30} className={styles.sidebarIcons} />
+            <Link href="/me/dashboard/profile">اطلاعات حساب</Link>
           </li>
           <li className={styles.link}>
             <IoPerson size={30} className={styles.sidebarIcons} />

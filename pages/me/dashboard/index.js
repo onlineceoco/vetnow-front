@@ -19,7 +19,7 @@ function Dashboard() {
     if (!authState.isAuthenticated) {
       router.push("/");
     }
-  }, []);
+  }, [authState]);
   return (
     <div className={classes.dashboardContainer}>
       <Sidebar isOpen={isOpen} toggle={toggle} />
