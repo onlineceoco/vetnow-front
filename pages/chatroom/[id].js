@@ -5,7 +5,6 @@ import WithAuth from "../../components/HOC/withAuth";
 import InfoBar from "../../components/InfoBar/InfoBar";
 import Input from "../../components/Input/Input";
 import Messages from "../../components/Messages/Messages";
-import { baseUrl } from "../../helpers/UrlConfig";
 import classes from "./chatroom.module.css";
 
 function Chatroom() {

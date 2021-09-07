@@ -1,30 +1,22 @@
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useState } from "react";
 import Layout from "../../../components/DashboardLayout/Layout";
-import { useRouter } from "next/router";
-import WithAuth from "../../../components/HOC/withAuth";
 import Sidebar from "../../../components/Sidebar/Sidebar";
 import Navbar from "../../../components/Navbar/Navbar";
 import classes from "./index.module.css";
-function Dashboard() {
-  const authState = useSelector(state => state.auth);
-  const router = useRouter();
+import nookies from "nookies";
+import setAuthToken from "../../../helpers/axiosInstance";
+function Dashboard({ user }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => {
     setIsOpen(!isOpen);
   };
 
-  useEffect(() => {
-    if (!authState.isAuthenticated) {
-      router.push("/");
-    }
-  }, [authState]);
   return (
     <div className={classes.dashboardContainer}>
       <Sidebar isOpen={isOpen} toggle={toggle} />
-      <Navbar toggle={toggle} />
-      <Layout>
+      <Navbar user={user} toggle={toggle} />
+      <Layout user={user}>
         <div className={classes.card}>
           <div></div>
           <div></div>
@@ -34,4 +26,24 @@ function Dashboard() {
   );
 }
 
-export default WithAuth(Dashboard);
+export async function getServerSideProps(ctx) {
+  const { jwt } = nookies.get(ctx);
+  const axios = setAuthToken(jwt);
+  try {
+    const res = await axios.get("users");
+    const user = res.data.user;
+    if (user) {
+      return { props: { user } };
+    }
+    return { props: {} };
+  } catch (e) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+}
+
+export default Dashboard;

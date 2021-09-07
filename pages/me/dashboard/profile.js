@@ -49,8 +49,8 @@ function Profile({ user }) {
   return (
     <div>
       <Sidebar isOpen={isOpen} toggle={toggle} />
-      <Navbar toggle={toggle} />
-      <Layout>
+      <Navbar user={user} toggle={toggle} />
+      <Layout user={user}>
         <div className={classes.card}>
           <div className={classes.header}>
             <span className={classes.headerText}>اطلاعات شخصی</span>
@@ -179,7 +179,14 @@ export async function getServerSideProps(context) {
         props: { user: user.data.user },
       };
     }
-  } catch (e) {}
+  } catch (e) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
 }
 
 export default Profile;

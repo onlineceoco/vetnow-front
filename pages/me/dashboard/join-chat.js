@@ -1,17 +1,14 @@
 import { useEffect, useState } from "react";
 import classes from "./joinChat.module.css";
-import { useSelector } from "react-redux";
 import Layout from "../../../components/DashboardLayout/Layout";
 import setAuthToken from "../../../helpers/axiosInstance";
-import io from "socket.io-client";
-import { baseUrl } from "../../../helpers/UrlConfig";
-import WithAuth from "../../../components/HOC/withAuth";
+
 import { useRouter } from "next/router";
 import nookies from "nookies";
 import Sidebar from "../../../components/Sidebar/Sidebar";
 import Navbar from "../../../components/Navbar/Navbar";
 
-function CreateChatroom({ cookies }) {
+function CreateChatroom({ user }) {
   const [chatroomName, setChatroomName] = useState("");
   const [room, setRoom] = useState();
   const router = useRouter();
@@ -21,7 +18,6 @@ function CreateChatroom({ cookies }) {
     setIsOpen(!isOpen);
   };
   let token;
-  const authState = useSelector(state => state.auth);
   if (typeof window !== "undefined") {
     token = localStorage.getItem("token");
   }
@@ -46,7 +42,7 @@ function CreateChatroom({ cookies }) {
       const axiosWithTokenHeader = setAuthToken(token);
       axiosWithTokenHeader.post("chat", {
         name: chatroomName,
-        user: authState.user._id,
+        user: user._id,
       });
       getRooms();
     } catch (e) {}
@@ -58,13 +54,13 @@ function CreateChatroom({ cookies }) {
 
   let roomForCurrentDoc = [];
   if (room) {
-    roomForCurrentDoc = room.filter(rm => rm.user === authState.user._id);
+    roomForCurrentDoc = room.filter(rm => rm.user === user._id);
   }
   return (
     <>
       <Sidebar isOpen={isOpen} toggle={toggle} />
-      <Navbar toggle={toggle} />
-      <Layout>
+      <Navbar user={user} toggle={toggle} />
+      <Layout user={user}>
         <div className={classes.container}>
           <div className={classes.card}>
             {roomForCurrentDoc.length > 0 ? (
@@ -105,10 +101,22 @@ function CreateChatroom({ cookies }) {
   );
 }
 
-// export async function getServerSideProps(ctx) {
-//   // Parse
-//   const cookies = nookies.get(ctx);
-//   return { props: { cookies } };
-// }
+export async function getServerSideProps(ctx) {
+  const { jwt } = nookies.get(ctx);
 
-export default WithAuth(CreateChatroom);
+  const axios = setAuthToken(jwt);
+  try {
+    const res = await axios.get("users");
+    const user = res.data.user;
+    return { props: { user } };
+  } catch (e) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+}
+
+export default CreateChatroom;

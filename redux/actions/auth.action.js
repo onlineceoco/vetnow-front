@@ -50,10 +50,14 @@ export const loginConfirm = (password, phone) => {
 export const logout = () => {
   return async dispatch => {
     try {
+      const token = localStorage.getItem("token");
+      const axios = setAuthToken(token);
+      const res = await axios.get("/users/logout", { withCredentials: true });
       dispatch({
         type: authConstants.LOGOUT_SUCCESS,
       });
     } catch (e) {
+      console.log(e.response);
       dispatch({ type: authConstants.LOGOUT_FAIL });
     }
   };

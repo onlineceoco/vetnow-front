@@ -2,19 +2,21 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./Dashboard.module.css";
 import { IoPerson } from "react-icons/io5";
-import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/actions/auth.action";
+import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
 
-export default function Layout(props) {
-  const authState = useSelector(state => state.auth);
+function Layout(props) {
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const handelLogout = () => {
     dispatch(logout());
+    router.replace("/");
   };
 
   const showDashboardLinks = () => {
-    if (authState.user && authState.user.role === "doctor") {
+    if (props.user && props.user.role === "doctor") {
       return (
         <>
           <li className={styles.link}>
@@ -98,3 +100,4 @@ export default function Layout(props) {
     </>
   );
 }
+export default Layout;

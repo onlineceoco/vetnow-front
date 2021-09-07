@@ -1,18 +1,15 @@
 import axios from "axios";
-import { api } from "./UrlConfig";
 
 function setAuthToken(token) {
-  if (token) {
-    return axios.create({
-      baseURL: api,
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-  }
+  return axios.create({
+    baseURL: process.env.api,
+    headers: {
+      Authorization: token ? `Bearer ${token}` : null,
+    },
+  });
 }
 export const axiosInstance = axios.create({
-  baseURL: api,
+  baseURL: process.env.api,
 });
 
 export default setAuthToken;

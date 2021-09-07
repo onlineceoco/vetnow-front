@@ -10,7 +10,7 @@ const Tab5 = ({ data }) => {
         return (
           <Card
             key={card._id}
-            main_images={`${baseUrl}/img/products/${card.images[0]}`}
+            main_images={`${process.env.baseUrl}/img/products/${card.images[0]}`}
             name={card.name}
             price={card.price}
           />

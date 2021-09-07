@@ -16,7 +16,7 @@ import { animateScroll as scroll } from "react-scroll";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 
-const Navbar = ({ toggle }) => {
+const Navbar = ({ toggle, user }) => {
   const [scrollNav, setScrolNav] = useState(false);
   const authState = useSelector(state => state.auth);
   const changeNav = () => {
@@ -34,13 +34,12 @@ const Navbar = ({ toggle }) => {
   const toggleHome = () => {
     scroll.scrollToTop();
   };
-
   return (
     <>
       <IconContext.Provider value={{ color: "red" }}>
         <Nav scrollNav={scrollNav}>
           <NavbarContainer>
-            {!authState.isAuthenticated ? (
+            {!user ? (
               <NavBtn>
                 <Link href="/login">
                   {<NavBtnLink> ثبت نام / ورود </NavBtnLink>}
@@ -50,7 +49,11 @@ const Navbar = ({ toggle }) => {
               <>
                 <NavBtn>
                   <Link href="/me/dashboard">
-                    {<NavBtnLink> داشبورد </NavBtnLink>}
+                    {
+                      <NavBtnLink>
+                        {user.name ? user.name : "داشبورد"}
+                      </NavBtnLink>
+                    }
                   </Link>
                 </NavBtn>
               </>
