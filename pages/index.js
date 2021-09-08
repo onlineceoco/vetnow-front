@@ -22,14 +22,13 @@ function Home({ user }) {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
   const refreshData = () => router.replace(router.asPath);
-
   const toggle = () => {
     setIsOpen(!isOpen);
   };
 
   useEffect(() => {
     refreshData();
-  }, [user]);
+  }, []);
 
   return (
     <div>
@@ -51,7 +50,6 @@ function Home({ user }) {
 
 export async function getServerSideProps(ctx) {
   const { jwt } = nookies.get(ctx);
-
   const axios = setAuthToken(jwt);
   try {
     const res = await axios.get("users");

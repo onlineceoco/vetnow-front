@@ -1,3 +1,5 @@
+import Head from "next/head";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -33,37 +35,50 @@ const Login = () => {
   };
 
   return (
-    <div
-      className="login-wrapper"
-      style={{ backgroundImage: `url('/images/ss.jpg')` }}
-    >
-      <div className="center">
-        <img src="/images/Layer1.png" alt="VetNow" />
-        <h1>ورود / ثبت نام</h1>
-        <form onSubmit={submitHandler}>
-          {alertState.kind && (
-            <Alert
-              error={alertState.kind && alertState.error}
-              kind={alertState.kind && alertState.kind}
-            />
-          )}
-          <div className="txt_field">
-            <input onChange={e => setPassword(e.target.value)} type="text" />
-            <span></span>
-            <label>رمز عبور خود را وارد نمایید</label>
-          </div>
-          <Timer expiryTimestamp={time} phone={phone} />
+    <>
+      <Head>
+        <title>Vetnow-Signin</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div
+        className="login-wrapper"
+        style={{ backgroundImage: `url('/images/ss.jpg')` }}
+      >
+        <div className="center">
+          <Image
+            width="300"
+            height="300"
+            src="/images/Layer1.png"
+            alt="VetNow"
+          />
+          <h1>ورود / ثبت نام</h1>
+          <form onSubmit={submitHandler}>
+            {alertState.kind && (
+              <Alert
+                error={alertState.kind && alertState.error}
+                kind={alertState.kind && alertState.kind}
+              />
+            )}
+            <div className="txt_field">
+              <input onChange={e => setPassword(e.target.value)} type="text" />
+              <span></span>
+              <label>رمز عبور خود را وارد نمایید</label>
+            </div>
+            <Timer expiryTimestamp={time} phone={phone} />
 
-          <input type="submit" value="ورود به وتنا" />
+            <input type="submit" value="ورود به وتنا" />
 
-          <div className="signup_link">
-            <h4>
-              با ورود و ثبت نام در پلتفرم , قوانین و حریم خصوصی آن را می‌پذیرید{" "}
-            </h4>
-          </div>
-        </form>
+            <div className="signup_link">
+              <h4>
+                با ورود و ثبت نام در پلتفرم , قوانین و حریم خصوصی آن را
+                می‌پذیرید
+              </h4>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

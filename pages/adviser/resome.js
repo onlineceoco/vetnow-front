@@ -1,5 +1,4 @@
-import { useState } from "react";
-import WithAuth from "../../components/HOC/withAuth";
+  import { useState } from "react";
 import setAuthToken from "../../helpers/axiosInstance";
 import { api } from "../../helpers/UrlConfig";
 import classes from "./resome.module.css";
@@ -93,4 +92,4 @@ export async function getServerSideProps(ctx) {
   return { props: { doctors: res.data.data, rooms: roomsRequest.data.data } };
 }
 
-export default WithAuth(Resome);
+export default Resome;

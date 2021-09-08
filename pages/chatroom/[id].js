@@ -1,13 +1,14 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
-import WithAuth from "../../components/HOC/withAuth";
 import InfoBar from "../../components/InfoBar/InfoBar";
 import Input from "../../components/Input/Input";
 import Messages from "../../components/Messages/Messages";
+import setAuthToken from "../../helpers/axiosInstance";
 import classes from "./chatroom.module.css";
+import nookies from "nookies";
 
-function Chatroom() {
+function Chatroom({ user }) {
   const router = useRouter();
   const roomId = router.query.id;
   const roomName = router.query.name;
@@ -26,7 +27,7 @@ function Chatroom() {
     socket.emit("chatroomMessage", { message, roomId }, () => setMessage(""));
   };
   useEffect(() => {
-    const socket = io("https://api.vetnow.ir", {
+    const socket = io(process.env.baseUrl, {
       auth: { token },
       transports: ["websocket", "polling", "flashsocket"],
     });
@@ -41,13 +42,13 @@ function Chatroom() {
         socket.emit("leaveroom", roomId);
       };
     }
-  }, []);
+  }, [roomId]);
 
   return (
     <div className={classes.outerContainer}>
       <div className={classes.container}>
         <InfoBar room={roomName} />
-        <Messages messages={messages} name={name} />
+        <Messages messages={messages} name={name} currentUser={user} />
         <Input
           message={message}
           setMessage={setMessage}
@@ -58,4 +59,22 @@ function Chatroom() {
   );
 }
 
-export default WithAuth(Chatroom);
+export async function getServerSideProps(ctx) {
+  const { jwt } = nookies.get(ctx);
+
+  const axios = setAuthToken(jwt);
+  try {
+    const res = await axios.get("users");
+    const user = res.data.user;
+    return { props: { user } };
+  } catch (e) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+}
+
+export default Chatroom;
