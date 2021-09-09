@@ -8,6 +8,7 @@ import setAuthToken from "../../helpers/axiosInstance";
 import classes from "./chatroom.module.css";
 import nookies from "nookies";
 
+let socket;
 function Chatroom({ user }) {
   const router = useRouter();
   const roomId = router.query.id;
@@ -15,8 +16,6 @@ function Chatroom({ user }) {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const [name, setName] = useState("");
-  const [socket, setSocket] = useState(null);
-
   let token;
   if (typeof window !== "undefined") {
     token = localStorage.getItem("token");
@@ -26,12 +25,13 @@ function Chatroom({ user }) {
     e.preventDefault();
     socket.emit("chatroomMessage", { message, roomId }, () => setMessage(""));
   };
+
   useEffect(() => {
-    const socket = io(process.env.baseUrl, {
+    socket = io(process.env.baseUrl, {
       auth: { token },
       transports: ["websocket", "polling", "flashsocket"],
     });
-    setSocket(socket);
+
     if (roomId) {
       socket.emit("joinroom", roomId);
       socket.on("newMessage", ({ message, name }) => {

@@ -1,4 +1,4 @@
-  import { useState } from "react";
+import { useState } from "react";
 import setAuthToken from "../../helpers/axiosInstance";
 import { api } from "../../helpers/UrlConfig";
 import classes from "./resome.module.css";
@@ -87,9 +87,18 @@ function Resome({ doctors, rooms }) {
 export async function getServerSideProps(ctx) {
   const token = nookies.get(ctx);
   const setAuthTokenToHeader = setAuthToken(token.jwt);
-  const res = await setAuthTokenToHeader.get(`${api}users/doctors`);
-  const roomsRequest = await setAuthTokenToHeader.get(`${api}chat`);
-  return { props: { doctors: res.data.data, rooms: roomsRequest.data.data } };
+  try {
+    const res = await setAuthTokenToHeader.get(`${api}users/doctors`);
+    const roomsRequest = await setAuthTokenToHeader.get(`${api}chat`);
+    return { props: { doctors: res.data.data, rooms: roomsRequest.data.data } };
+  } catch (e) {
+    return {
+      redirect: {
+        destination: "/login",
+        permenant: false,
+      },
+    };
+  }
 }
 
 export default Resome;

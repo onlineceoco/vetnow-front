@@ -24,7 +24,7 @@
 }
 .name {
   color: #d38c3c;
-  margin: 6rem 0;
+  margin: 4rem 0;
 }
 
 .name > span {
@@ -73,4 +73,46 @@
 .labesContainer > p {
   margin: 1rem;
   font-weight: bolder;
+}
+
+@media (max-width: 970px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll !important;
+  }
+  .control {
+    height: unset;
+    padding: unset;
+    width: unset;
+    max-width: unset;
+  }
+  .name {
+    margin: 1rem 0;
+  }
+  .btnGroup {
+    margin: 0;
+  }
+  .btn {
+    font-size: 1rem;
+  }
+  .resome {
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+  }
+  .white {
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+  }
+  .labesContainer {
+    margin: 0;
+  }
+  .label {
+    font-size: 1.3rem;
+  }
+  .labesContainer > p {
+    font-size: 0.8rem;
+  }
 }
