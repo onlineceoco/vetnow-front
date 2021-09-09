@@ -24,6 +24,7 @@ export async function getStaticProps(context) {
   const res = await axiosInstance.get(url);
   return {
     props: { data: res.data.data },
+    revalidate: 10,
   };
 }
 export default Pharmacy;

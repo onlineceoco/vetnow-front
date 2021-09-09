@@ -35,7 +35,7 @@ function Layout(props) {
           <li className={styles.link}>
             <IoPerson size={30} className={styles.sidebarIcons} />
             <a style={{ cursor: "pointer" }} onClick={handelLogout}>
-              خروج
+              خروج از حساب
             </a>
           </li>
         </>
@@ -71,7 +71,7 @@ function Layout(props) {
           <li className={styles.link}>
             <IoPerson size={30} className={styles.sidebarIcons} />
             <a style={{ cursor: "pointer" }} onClick={handelLogout}>
-              خروج
+              خروج از حساب
             </a>
           </li>
         </>

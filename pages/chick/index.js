@@ -22,8 +22,10 @@ export async function getStaticProps(context) {
     "products?category=راس 308&category=آدین&category=هوبارد&category=کاپ",
   );
   const res = await axiosInstance.get(url);
+  console.log(res);
   return {
     props: { data: res.data.data },
+    revalidate: 10,
   };
 }
 
