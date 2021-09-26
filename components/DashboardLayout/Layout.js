@@ -6,7 +6,7 @@ import { logout } from "../../redux/actions/auth.action";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 
-function Layout(props) {
+function DashboardLayout(props) {
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -26,6 +26,30 @@ function Layout(props) {
           <li className={styles.link}>
             <IoPerson size={30} className={styles.sidebarIcons} />
             <Link href="/me/dashboard/join-chat">شروع چت</Link>
+          </li>
+          <li className={styles.link}>
+            <IoPerson size={30} className={styles.sidebarIcons} />
+            <Link href="/me/dashboard/profile">اطلاعات حساب</Link>
+          </li>
+          <hr className={styles.hr} />
+          <li className={styles.link}>
+            <IoPerson size={30} className={styles.sidebarIcons} />
+            <a style={{ cursor: "pointer" }} onClick={handelLogout}>
+              خروج از حساب
+            </a>
+          </li>
+        </>
+      );
+    } else if (props.user && props.user.role === "oprator") {
+      return (
+        <>
+          <li className={styles.link}>
+            <IoPerson size={30} className={styles.sidebarIcons} />
+            <Link href="/me/dashboard">داشبورد</Link>
+          </li>
+          <li className={styles.link}>
+            <IoPerson size={30} className={styles.sidebarIcons} />
+            <Link href="/me/dashboard/support">پنل پشتیبانی</Link>
           </li>
           <li className={styles.link}>
             <IoPerson size={30} className={styles.sidebarIcons} />
@@ -100,4 +124,4 @@ function Layout(props) {
     </>
   );
 }
-export default Layout;
+export default DashboardLayout;

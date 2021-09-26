@@ -8,8 +8,10 @@ const Input = ({ setMessage, sendMessage, message }) => (
       className={classes.input}
       type="text"
       placeholder="پیام خود را وارد کنید"
-      value={message}
-      onChange={({ target: { value } }) => setMessage(value)}
+      value={message.message}
+      onChange={({ target: { value } }) =>
+        setMessage({ message: value, from: "support" })
+      }
       onKeyPress={event => (event.key === "Enter" ? sendMessage(event) : null)}
     />
     <button className={classes.sendButton} onClick={e => sendMessage(e)}>

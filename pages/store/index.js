@@ -4,14 +4,15 @@ import Tabs from "../../components/store/tabs/Tabs";
 import Footer from "../../components/Footer/Footer";
 import Drawer from "../../components/Drawer/Drawer";
 import { axiosInstance } from "../../helpers/axiosInstance";
+import Layout from "../../components/Layout/Layout";
 const Store = ({ data }) => {
   return (
     <div>
-      <Menubar />
-      <Drawer />
-      <SliderOne />
-      <Tabs data={data} />
-      <Footer />
+      <Layout isSecond>
+        <SliderOne />
+        <Tabs data={data} />
+        <Footer />
+      </Layout>
     </div>
   );
 };
