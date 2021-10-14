@@ -50,7 +50,7 @@ export async function getStaticProps(context) {
     const res = await axiosInstance.get(url);
     return {
       props: { data: res.data.data },
-      revalidate: false,
+      revalidate: 1,
     };
   } catch (e) {
     return { props: { data: [] } };
