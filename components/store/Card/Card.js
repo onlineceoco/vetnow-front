@@ -3,11 +3,11 @@ import Link from "next/link";
 import { BiHeart, BiCart, BiBookContent } from "react-icons/bi";
 import PN from "persian-number";
 
-const Card = ({ image1, name, price }) => {
+const Card = ({ main_images, name, price }) => {
   return (
     <div className={styles.mainCard}>
       <div className={styles.image}>
-        <img id={styles.main_image} src={image1} alt="" />
+        <img id={styles.main_image} src={main_images} alt="" />
         <div className={styles.circle}>
           <Link href="/singleProduct" passHref>
             <span>
