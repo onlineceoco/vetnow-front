@@ -1,6 +1,6 @@
 import product_styles from "./CardStyle.module.css";
 import Card2 from "../store/Card/Card";
-const Card = ({ data }) => {  
+const Card = ({ data }) => {
   return (
     <div className={product_styles.cardWrapper}>
       <div className={product_styles.cardContainer}>
@@ -8,7 +8,7 @@ const Card = ({ data }) => {
           return (
             <Card2
               key={card._id}
-              main_images={`${process.env.baseUrl}/img/products/${card.images[0]}`}
+              main_images={`https://api.vetnow.ir/img/products/${card.images[0]}`}
               name={card.name}
               price={card.price}
             />
