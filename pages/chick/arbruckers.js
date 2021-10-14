@@ -74,11 +74,15 @@ const Arbruckers = ({ data }) => {
 
 export async function getStaticProps(context) {
   const url = encodeURI("products?category=آبراکرز پلاس");
-  const res = await axiosInstance.get(url);
-  return {
-    props: { data: res.data.data },
-    revalidate: 10,
-  };
+  try {
+    const res = await axiosInstance.get(url);
+    return {
+      props: { data: res.data.data },
+      revalidate: 10,
+    };
+  } catch (error) {
+    return { props: { data: [] } };
+  }
 }
 
 export default Arbruckers;
