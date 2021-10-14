@@ -9,15 +9,14 @@ const Tab1 = ({ data }) => {
       dt.category === "کنسانتره" ||
       dt.category === "راس 308",
   );
-  console.log(data);
-  console.log(filteredData);
+
   return (
     <div className={styles.main}>
       <div className={styles.cardContainer}>
         {filteredData.map(card => (
           <Fragment key={card._id}>
             <Card
-              main_images={`${process.env.baseUrl}/img/products/${card.images[0]}`}
+              main_images={`https://api.vetnow.ir/img/products/${card.images[0]}`}
               name={card.name}
               price={card.price}
             />
