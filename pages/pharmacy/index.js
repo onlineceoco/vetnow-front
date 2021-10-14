@@ -39,12 +39,16 @@ export async function getStaticProps(context) {
   const url = encodeURI(
     "products?category=افزودنی ها&category=واکسن ها&category=ضد عفونی کننده ها&category=آنتی بیوتیک ها&category=ویتامین ها",
   );
-  const res = await axiosInstance.get(url);
+  try {
+    const res = await axiosInstance.get(url);
 
-  return {
-    props: { data: res.data.data },
-    revalidate: 10,
-  };
+    return {
+      props: { data: res.data.data },
+      revalidate: 10,
+    };
+  } catch (e) {
+    return { props: { data: [] } };
+  }
 }
 
 export default Pharmacy;

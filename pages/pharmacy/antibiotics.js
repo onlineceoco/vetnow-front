@@ -47,12 +47,16 @@ const Antibiotics = ({ data }) => {
 
 export async function getStaticProps(context) {
   const url = encodeURI("products?category=آنتی بیوتیک ها");
-  const res = await axiosInstance.get(url);
+  try {
+    const res = await axiosInstance.get(url);
 
-  return {
-    props: { data: res.data.data },
-    revalidate: 10,
-  };
+    return {
+      props: { data: res.data.data },
+      revalidate: 10,
+    };
+  } catch (e) {
+    return { props: { data: [] } };
+  }
 }
 
 export default Antibiotics;

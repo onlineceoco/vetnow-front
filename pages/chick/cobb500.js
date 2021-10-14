@@ -76,11 +76,15 @@ const Cobb500 = ({ data }) => {
 
 export async function getStaticProps(context) {
   const url = encodeURI("products?category=کاپ");
-  const res = await axiosInstance.get(url);
-  return {
-    props: { data: res.data.data },
-    revalidate: 10,
-  };
+  try {
+    const res = await axiosInstance.get(url);
+    return {
+      props: { data: res.data.data },
+      revalidate: 10,
+    };
+  } catch (e) {
+    return { props: { data: [] } };
+  }
 }
 
 export default Cobb500;
