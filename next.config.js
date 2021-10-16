@@ -1,5 +1,6 @@
 const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
 const withPWA = require("next-pwa");
+
 module.exports = phase => {
   if (phase === PHASE_DEVELOPMENT_SERVER) {
     return {
@@ -22,13 +23,12 @@ module.exports = phase => {
     },
   };
 };
-// module.exports = withPWA({
-//   pwa: {
-//     dest: "public",
-//     // disable: process.env.NODE_ENV === 'development',
-//     register: true,
-//     // scope: '/app',
-//     // sw: 'service-worker.js',
-//     //...
-//   },
-// });
+module.exports = withPWA({
+  pwa: {
+    // dest: "public",
+    disable: process.env.NODE_ENV === "development",
+    register: true,
+    // scope: '/app',
+    sw: "/sw.js",
+  },
+});
