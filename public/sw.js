@@ -23,7 +23,7 @@ if (!self.define) {
         promise = new Promise(async resolve => {
           if ("document" in self) {
             const script = document.createElement("script");
-            script.src = name;
+            script.src = name;  
             document.head.appendChild(script);
             script.onload = resolve;
           } else {

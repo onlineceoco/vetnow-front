@@ -41,9 +41,9 @@ export const menuItems = [
     name: "مشاوره",
     to: "/adviser",
     subMenus: [
-      { name: "دامپزشک آنلاین", to: "/chatroom" },
-      { name: "مشاوره پرورشی", to: "/chatroom" },
-      { name: "مشاور تغذیه ای", to: "/chatroom" },
+      { name: "دامپزشک آنلاین", to: "/adviser/resome" },
+      { name: "مشاوره پرورشی", to: "/adviser/resome" },
+      { name: "مشاور تغذیه ای", to: "/adviser/resome" },
       { name: "طرح توجیهی و کار آفرینی", to: "/adviser/plans" },
     ],
   },
