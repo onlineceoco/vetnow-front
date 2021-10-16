@@ -1,32 +1,32 @@
 {
-    "theme_color": "#f69435",
-    "background_color": "#f69435",
-    "display": "standalone",
-    "scope": "/",
-    "start_url": "/",
-    "name": "VETNOW",
-    "short_name": "VETNOW",
-    "description": "\u0645\u062c\u0645\u0648\u0639\u0647 \u062a\u062e\u0635\u0635\u06cc \u0637\u06cc\u0648\u0631",
-    "icons": [
-        {
-            "src": "/icon-192x192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "/icon-256x256.png",
-            "sizes": "256x256",
-            "type": "image/png"
-        },
-        {
-            "src": "/icon-384x384.png",
-            "sizes": "384x384",
-            "type": "image/png"
-        },
-        {
-            "src": "/icon-512x512.png",
-            "sizes": "512x512",
-            "type": "image/png"
-        }
-    ]
+  "theme_color": "#f69435",
+  "background_color": "#f69435",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "https://vetnow.ir",
+  "name": "VETNOW",
+  "short_name": "VETNOW",
+  "description": "\u0645\u062c\u0645\u0648\u0639\u0647 \u062a\u062e\u0635\u0635\u06cc \u0637\u06cc\u0648\u0631",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
 }
