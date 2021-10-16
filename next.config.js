@@ -25,9 +25,8 @@ module.exports = phase => {
 };
 module.exports = withPWA({
   pwa: {
-    dest: "public",
-    // register: true,
-    // scope: '/app',
-    // sw: "/sw.js",
+    // dest: "public",
+    register: true,
+    sw: "/sw.js",
   },
 });

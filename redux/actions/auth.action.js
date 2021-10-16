@@ -12,6 +12,9 @@ export const singinupLogin = phone => {
         payload: res.data.user,
       });
     } catch (e) {
+      console.log("====================================");
+      console.log(e.response);
+      console.log("====================================");
       dispatch({
         type: authConstants.SIGNUP_LOGIN_FAIL,
         payload: e.response.data.message,
