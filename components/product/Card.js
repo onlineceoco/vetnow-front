@@ -8,7 +8,7 @@ const Card = ({ data }) => {
           return (
             <Card2
               key={card._id}
-              main_images={`https://api.vetnow.ir/img/products/${card.images[0]}`}
+              main_images={`${process.env.baseUrl}/img/products/${card.images[0]}`}
               name={card.name}
               price={card.price}
             />

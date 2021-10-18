@@ -9,7 +9,7 @@ const Card = ({ main_images, name, price }) => {
       <div className={styles.image}>
         <img id={styles.main_image} src={main_images} alt="" />
         <div className={styles.circle}>
-          <Link href="/singleProduct" passHref>
+          <Link href={`/products/${name}`} passHref>
             <span>
               <BiBookContent id={styles.logo2} />
             </span>
@@ -23,7 +23,7 @@ const Card = ({ main_images, name, price }) => {
           </Link>
         </div>
         <div className={styles.circle}>
-          <Link href="/singleProduct" passHref>
+          <Link href={`/products/${name}`} passHref>
             <span>
               <BiCart id={styles.logo2} />
             </span>
