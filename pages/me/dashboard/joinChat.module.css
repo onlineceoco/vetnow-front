@@ -1,0 +1,71 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.card {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  width: 250px;
+  border-radius: 5px;
+  position: relative;
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+    0 6px 6px rgba(0, 0, 0, 0.23);
+  -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+    0 6px 6px rgba(0, 0, 0, 0.23);
+  -ms-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  -o-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.card::after {
+  content: "چت روم";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: -30px;
+  top: -12px;
+  border-radius: 5px;
+  width: 120px;
+  height: 40px;
+  transform: rotate(-25deg);
+  background-color: #febd69;
+}
+
+.roomName {
+  text-align: center;
+}
+
+.createRoom {
+  display: flex;
+  flex-direction: column;
+}
+.createRoom > input {
+  margin-top: 20px;
+  padding: 0 7px;
+}
+.createRoom > input:focus {
+  outline: none;
+}
+
+.join {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  background-color: #232f3e;
+  color: rgb(240, 236, 236);
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding: 1rem;
+  font-weight: 600;
+  margin-top: 20px;
+  cursor: pointer;
+}

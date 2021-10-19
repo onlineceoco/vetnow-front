@@ -1,0 +1,60 @@
+.main{
+    width: 100%;
+    height: 600px;
+    /* padding: 100px; */
+}
+@media screen and (max-width:768px) {
+    .main{
+        height: 400px;
+    }
+}
+@media screen and (max-width:480px) {
+    .main{
+        height: 250px;
+    }
+}
+.main:first-child{
+   
+}
+.one{
+    animation: Anima 2s alternate infinite;
+}
+.two{
+    animation: Anima 2s alternate infinite .5s;
+}
+.clipPath{
+    width:"50%";
+     height:"50%";
+}
+.tractor{
+    animation: tractorAnima 2s alternate ;
+}
+.gRightTwo{
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: rotateAnima .2s ease infinite;
+}
+@keyframes Anima {
+    from{
+        transform: translateY(10px);
+    }
+    to{
+        transform: translateY(-10px);
+    }
+}
+@keyframes tractorAnima {
+    from{
+        transform: translatex(10px);
+    }
+    to{
+        transform: translatex(-10px);
+    }
+}
+@keyframes rotateAnima {
+    from{
+        transform: rotatey(720deg)
+    }
+    to{
+        transform: rotatey(0deg)
+    }
+}
