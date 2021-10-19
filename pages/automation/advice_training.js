@@ -1,4 +1,4 @@
-import Layout from "../../components/adviser/Layout";
+import Layout from "../../components/Adviser/Layout";
 import DenturesP from "../../components/product/denturesProduct/DenturesP";
 import styles from "../../styles/model.module.css";
 import React360Viewer from "../../components/3d/React360Viewer";
@@ -39,7 +39,7 @@ export default function Toothpaste() {
         leftSubtitle=" جمع آوری طیور گوشتی بدون آسیب  و سریع با امکان شمارش و باسکول   "
         direction="rtl"
       />
-      
+
       <DenturesP
         image="/images/run01.jpg"
         leftSquareColor="#FF9900"
@@ -53,69 +53,67 @@ export default function Toothpaste() {
         leftSubtitle=" موتور الکتریکی ترمینال برای کنترل و استفاده انواع بازو در فارم های صنعتی   "
         direction="rtl"
       />
-      
+
       <div ref={observe}>
-      <DenturesP
-        image="/images/harvestor03.jpg"
-        leftSquareColor="#FF9900"
-        middleSquareColor="#b30000"
-        rightSquareColor="#000"
-        rightTitle="کانالوگ محصول"
-        leftBtnTitle="اطلاعات بیشتر"
-        middleBtnTitle=""
-        rightBtnTitle="ثبت سفارش"
-        leftTitle="بازو هاروستور"
-        leftSubtitle=" مقیاس پذیر با بازو های جمع شونده , اتصال سریع و راحت به انواع مینی ربات های ترمینال   "
-        direction="rtl"
-      />
+        <DenturesP
+          image="/images/harvestor03.jpg"
+          leftSquareColor="#FF9900"
+          middleSquareColor="#b30000"
+          rightSquareColor="#000"
+          rightTitle="کانالوگ محصول"
+          leftBtnTitle="اطلاعات بیشتر"
+          middleBtnTitle=""
+          rightBtnTitle="ثبت سفارش"
+          leftTitle="بازو هاروستور"
+          leftSubtitle=" مقیاس پذیر با بازو های جمع شونده , اتصال سریع و راحت به انواع مینی ربات های ترمینال   "
+          direction="rtl"
+        />
       </div>
-      {inView && 
-            <DenturesP
-            image="/images/run02.jpg"
-            leftSquareColor="#FF9900"
-            middleSquareColor="#b30000"
-            rightSquareColor="#000"
-            rightTitle="کاتالوگ محصول"
-            leftBtnTitle="اطلاعات بیشتر"
-            middleBtnTitle=""
-            rightBtnTitle="ثبت سفارش"
-            leftTitle="ربات ناظر و ترمینال"
-            leftSubtitle="  خودران و قابل کنترل با امکان استفاده از انواع بازو ها برای جمع آوری  لاشه و جمع آوری اطلاعات از بستر فارم   "
-            direction="rtl"
-          />
-      }
       {inView && (
-         <DenturesP
-         image="/images/harvestor.jpg"
-         leftSquareColor="#FF9900"
-         middleSquareColor="#b30000"
-         rightSquareColor="#000"
-         rightTitle="کاتالوگ محصول"
-         leftBtnTitle="اطلاعات بیشتر"
-         middleBtnTitle=""
-         rightBtnTitle="ثبت سفارش"
-         leftTitle="هاروستور مرغ تمام اتوماتیک"
-         leftSubtitle=" جمع آوری طیور گوشتی بدون آسیب  و سریع با امکان شمارش و باسکول   "
-         direction="rtl"
-       />
+        <DenturesP
+          image="/images/run02.jpg"
+          leftSquareColor="#FF9900"
+          middleSquareColor="#b30000"
+          rightSquareColor="#000"
+          rightTitle="کاتالوگ محصول"
+          leftBtnTitle="اطلاعات بیشتر"
+          middleBtnTitle=""
+          rightBtnTitle="ثبت سفارش"
+          leftTitle="ربات ناظر و ترمینال"
+          leftSubtitle="  خودران و قابل کنترل با امکان استفاده از انواع بازو ها برای جمع آوری  لاشه و جمع آوری اطلاعات از بستر فارم   "
+          direction="rtl"
+        />
       )}
       {inView && (
-         <DenturesP
-         image="/images/harvestor03.jpg"
-         leftSquareColor="#FF9900"
-         middleSquareColor="#b30000"
-         rightSquareColor="#000"
-         rightTitle="کاتالوگ محصول"
-         leftBtnTitle="اطلاعات بیشتر"
-         middleBtnTitle=""
-         rightBtnTitle="ثبت سفارش"
-         leftTitle="هاروستور مرغ تمام اتوماتیک"
-         leftSubtitle=" جمع آوری طیور گوشتی بدون آسیب  و سریع با امکان شمارش و باسکول   "
-         direction="rtl"
-       />
+        <DenturesP
+          image="/images/harvestor.jpg"
+          leftSquareColor="#FF9900"
+          middleSquareColor="#b30000"
+          rightSquareColor="#000"
+          rightTitle="کاتالوگ محصول"
+          leftBtnTitle="اطلاعات بیشتر"
+          middleBtnTitle=""
+          rightBtnTitle="ثبت سفارش"
+          leftTitle="هاروستور مرغ تمام اتوماتیک"
+          leftSubtitle=" جمع آوری طیور گوشتی بدون آسیب  و سریع با امکان شمارش و باسکول   "
+          direction="rtl"
+        />
       )}
-     
-      
+      {inView && (
+        <DenturesP
+          image="/images/harvestor03.jpg"
+          leftSquareColor="#FF9900"
+          middleSquareColor="#b30000"
+          rightSquareColor="#000"
+          rightTitle="کاتالوگ محصول"
+          leftBtnTitle="اطلاعات بیشتر"
+          middleBtnTitle=""
+          rightBtnTitle="ثبت سفارش"
+          leftTitle="هاروستور مرغ تمام اتوماتیک"
+          leftSubtitle=" جمع آوری طیور گوشتی بدون آسیب  و سریع با امکان شمارش و باسکول   "
+          direction="rtl"
+        />
+      )}
     </Layout>
   );
 }
