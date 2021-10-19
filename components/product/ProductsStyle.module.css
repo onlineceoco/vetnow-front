@@ -27,6 +27,7 @@
 }
 .ChartDetail {
   animation: anima 1s ease-in-out;
+  padding: 0 40px;
   margin:auto;
   display: flex;
   flex-direction: column;
@@ -35,7 +36,7 @@
 }
 .ChartDetail > h1 {
   margin: auto;
-  text-align: center;
+  text-align: justify;
   font-size: 14px;
   font-weight: 600;
   line-height: 40px;
