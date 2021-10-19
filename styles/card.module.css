@@ -19,6 +19,7 @@
 }
 .mainCard .image #main_image {
   width: 90%;
+  object-fit: contain;
   background-color: #fff;
   height: 290px;
   padding: 10px;
