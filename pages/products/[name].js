@@ -22,7 +22,7 @@ function Modal({ data }) {
     leftTabTitle: " مشخصات فنی",
     rightTabTitle: "نظرات کاربران",
   };
-
+  console.log(data);
   return (
     <>
       <div className={modalcssStyle["overlay"]}>
