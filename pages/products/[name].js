@@ -13,16 +13,15 @@ function Modal({ data }) {
     image4: data[0] && data[0].images[3],
     linkTitle: "---",
     subLinkTitle: "---",
-    productName_fa: data && data[0].name,
+    productName_fa: data[0] && data[0].name,
     productName_en: "شرکت مرغ مادر نمونه",
-    productDetaile: data && data[0].descreption,
-    price: data && PN.convertEnToPe(data[0].price),
+    productDetaile: data[0] && data[0].descreption,
+    price: data[0] && PN.convertEnToPe(data[0].price),
     btnTitle: "ثبت خرید",
     btnTitle2: "دانلود آنالیز خونی مادر",
     leftTabTitle: " مشخصات فنی",
     rightTabTitle: "نظرات کاربران",
   };
-  console.log(data);
 
   return (
     <>
