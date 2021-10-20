@@ -32,6 +32,9 @@ const ImageTab = ({ image1, image2, image3, image4 }) => {
             id="tab1"
             style={{
               backgroundImage: `url("${process.env.baseUrl}/img/products/${image1}")`,
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "contain",
             }}
             htmlFor={imageTab["radio1"]}
           ></label>
@@ -39,6 +42,9 @@ const ImageTab = ({ image1, image2, image3, image4 }) => {
             id="tab2"
             style={{
               backgroundImage: `url("${process.env.baseUrl}/img/products/${image2}")`,
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "contain",
             }}
             htmlFor={imageTab["radio2"]}
           ></label>
@@ -46,6 +52,9 @@ const ImageTab = ({ image1, image2, image3, image4 }) => {
             id="tab3"
             style={{
               backgroundImage: `url("${process.env.baseUrl}/img/products/${image3}")`,
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "contain",
             }}
             htmlFor={imageTab["radio3"]}
           ></label>
