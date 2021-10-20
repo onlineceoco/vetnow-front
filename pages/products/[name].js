@@ -4,6 +4,7 @@ import PlusMinusBtn from "../../components/SingleProductElement/PlusMinusBtn";
 import DescriptionComment from "../../components/SingleProductElement/DescriptionComment";
 import { axiosInstance } from "../../helpers/axiosInstance";
 import PN from "persian-number";
+import Layout from "../../components/Adviser/Layout";
 
 function Modal({ data }) {
   const detaile = {
@@ -24,7 +25,7 @@ function Modal({ data }) {
   };
 
   return (
-    <>
+    <Layout>
       <div className={modalcssStyle["overlay"]}>
         <div className={modalcssStyle["setFixed"]}>
           <div className={modalcssStyle["container"]}>
@@ -79,7 +80,7 @@ function Modal({ data }) {
           `}
         </style>
       </div>
-    </>
+    </Layout>
   );
 }
 export async function getStaticPaths(data) {
