@@ -7,16 +7,16 @@ import PN from "persian-number";
 
 function Modal({ data }) {
   const detaile = {
-    image1: data[0] && data[0].images[0],
-    image2: data[0] && data[0].images[1],
-    image3: data[0] && data[0].images[2],
-    image4: data[0] && data[0].images[3],
+    image1: data[0].images[0] && data[0].images[0],
+    image2: data[0].images[1].images[1],
+    image3: data[0].images[2].images[2],
+    image4: data[0].images[3].images[3],
     linkTitle: "---",
     subLinkTitle: "---",
     productName_fa: data[0] && data[0].name,
     productName_en: "شرکت مرغ مادر نمونه",
-    productDetaile: data[0] && data[0].descreption,
-    price: data[0] && PN.convertEnToPe(data[0].price),
+    productDetaile: data && data[0].descreption,
+    price: data && PN.convertEnToPe(data[0].price),
     btnTitle: "ثبت خرید",
     btnTitle2: "دانلود آنالیز خونی مادر",
     leftTabTitle: " مشخصات فنی",
