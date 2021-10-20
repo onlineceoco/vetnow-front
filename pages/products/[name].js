@@ -7,10 +7,10 @@ import PN from "persian-number";
 
 function Modal({ data }) {
   const detaile = {
-    image1: data && data[0].images[0],
-    image2: data && data[0].images[1],
-    image3: data && data[0].images[2],
-    image4: data && data[0].images[3],
+    image1: data[0] && data[0].images[0],
+    image2: data[0] && data[0].images[1],
+    image3: data[0] && data[0].images[2],
+    image4: data[0] && data[0].images[3],
     linkTitle: "---",
     subLinkTitle: "---",
     productName_fa: data && data[0].name,
@@ -22,6 +22,8 @@ function Modal({ data }) {
     leftTabTitle: " مشخصات فنی",
     rightTabTitle: "نظرات کاربران",
   };
+  console.log(data);
+
   return (
     <>
       <div className={modalcssStyle["overlay"]}>
@@ -81,7 +83,6 @@ function Modal({ data }) {
     </>
   );
 }
-
 export async function getStaticPaths(data) {
   const url = encodeURI("products");
   const res = await axiosInstance.get(url);
