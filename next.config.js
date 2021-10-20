@@ -26,7 +26,7 @@ module.exports = phase => {
 module.exports = withPWA({
   pwa: {
     // dest: "public",
-    register: true,
+    // register: true,
     sw: "/sw.js",
   },
 });

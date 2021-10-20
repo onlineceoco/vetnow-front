@@ -8,12 +8,12 @@ import draftToHtml from "draftjs-to-html";
 import Layout from "../../components/Adviser/Layout";
 
 function Modal({ data }) {
-  const rawContentState = data ? JSON.parse(data[0].descreption) : null;
-  const hashConfig = {
-    trigger: "#",
-    separator: " ",
-  };
-  const markup = draftToHtml(rawContentState, hashConfig);
+  // const rawContentState = data ? JSON.parse(data[0].descreption) : null;
+  // const hashConfig = {
+  //   trigger: "#",
+  //   separator: " ",
+  // };
+  // const markup = draftToHtml(rawContentState, hashConfig);
   const detaile = {
     image1: data ? data[0].images[0] : null,
     image2: data ? data[0].images[1] : null,
@@ -23,7 +23,7 @@ function Modal({ data }) {
     subLinkTitle: "---",
     productName_fa: data ? data[0].name : null,
     productName_en: "شرکت مرغ مادر نمونه",
-    productDetaile: markup,
+    productDetaile: "", //markup inja bayad bashe
     price: data ? PN.convertEnToPe(PN.sliceNumber(data[0].price)) : null,
     btnTitle: "ثبت خرید",
     btnTitle2: "دانلود آنالیز خونی مادر",
