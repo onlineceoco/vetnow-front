@@ -55,6 +55,7 @@ const ImageTab = ({ image1, image2, image3, image4 }) => {
               backgroundImage: `url("${process.env.baseUrl}/img/products/${image4}")`,
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
             }}
             htmlFor={imageTab["radio4"]}
           ></label>
