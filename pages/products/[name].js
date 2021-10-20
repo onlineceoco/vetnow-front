@@ -8,21 +8,21 @@ import PN from "persian-number";
 function Modal({ data }) {
   const detaile = {
     image1: data ? data[0].images[0] : null,
-    image2: data ?  data[0].images[1]:null,
-    image3: data ? data[0].images[2]:null,
-    image4: data ? data[0].images[3]:null,
+    image2: data ? data[0].images[1] : null,
+    image3: data ? data[0].images[2] : null,
+    image4: data ? data[0].images[3] : null,
     linkTitle: "---",
     subLinkTitle: "---",
-    productName_fa: data ? data[0].name:null,
+    productName_fa: data ? data[0].name : null,
     productName_en: "شرکت مرغ مادر نمونه",
-    productDetaile: data ? data[0].descreption:null,
-    price: data ? PN.convertEnToPe(data[0].price):null,
+    productDetaile: data ? data[0].descreption : null,
+    price: data ? PN.convertEnToPe(data[0].price) : null,
     btnTitle: "ثبت خرید",
     btnTitle2: "دانلود آنالیز خونی مادر",
     leftTabTitle: " مشخصات فنی",
     rightTabTitle: "نظرات کاربران",
   };
-  console.log(data);
+
   return (
     <>
       <div className={modalcssStyle["overlay"]}>
