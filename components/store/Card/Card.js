@@ -17,7 +17,7 @@ const Card = ({ main_images, name, price }) => {
           alt=""
         />
         <div className={styles.circle}>
-          <Link href="/singleProduct" passHref>
+          <Link href={`/products/${name}`} passHref>
             <span>
               <BiBookContent id={styles.logo2} />
             </span>
