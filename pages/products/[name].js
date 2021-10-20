@@ -16,7 +16,7 @@ function Modal({ data }) {
     productName_fa: data ? data[0].name : null,
     productName_en: "شرکت مرغ مادر نمونه",
     productDetaile: data ? data[0].descreption : null,
-    price: data ? PN.convertEnToPe(data[0].price) : null,
+    price: data ? PN.convertEnToPe(PN.sliceNumber(data[0].price)) : null,
     btnTitle: "ثبت خرید",
     btnTitle2: "دانلود آنالیز خونی مادر",
     leftTabTitle: " مشخصات فنی",
