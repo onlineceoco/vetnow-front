@@ -5,6 +5,7 @@ import DescriptionComment from "../../components/SingleProductElement/Descriptio
 import { axiosInstance } from "../../helpers/axiosInstance";
 import PN from "persian-number";
 import draftToHtml from "draftjs-to-html";
+import Layout from "../../components/Adviser/Layout";
 
 function Modal({ data }) {
   const rawContentState = data ? JSON.parse(data[0].descreption) : null;
@@ -31,7 +32,7 @@ function Modal({ data }) {
   };
 
   return (
-    <>
+    <Layout>
       <div className={modalcssStyle["overlay"]}>
         <div className={modalcssStyle["setFixed"]}>
           <div className={modalcssStyle["container"]}>
@@ -88,7 +89,7 @@ function Modal({ data }) {
           `}
         </style>
       </div>
-    </>
+    </Layout>
   );
 }
 export async function getStaticPaths(data) {
