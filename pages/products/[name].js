@@ -82,9 +82,14 @@ function Modal({ data }) {
   );
 }
 
-export async function getStaticPaths() {
+export async function getStaticPaths(data) {
+  const url = encodeURI("products");
+  const res = await axiosInstance.get(url);
+  const paths = res.data.data.map(dt => ({
+    params: { name: dt.name },
+  }));
   return {
-    paths: [{ params: { name: "ss" } }],
+    paths,
     fallback: true,
   };
 }
