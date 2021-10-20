@@ -23,10 +23,10 @@ module.exports = phase => {
     },
   };
 };
-module.exports = withPWA({
-  pwa: {
-    // dest: "public",
-    // register: true,
-    sw: "/sw.js",
-  },
-});
+// module.exports = withPWA({
+//   pwa: {
+//     // dest: "public",
+//     // register: true,
+//     sw: "/sw.js",
+//   },
+// });
