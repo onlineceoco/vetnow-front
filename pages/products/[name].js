@@ -4,8 +4,15 @@ import PlusMinusBtn from "../../components/SingleProductElement/PlusMinusBtn";
 import DescriptionComment from "../../components/SingleProductElement/DescriptionComment";
 import { axiosInstance } from "../../helpers/axiosInstance";
 import PN from "persian-number";
+import draftToHtml from "draftjs-to-html";
 
 function Modal({ data }) {
+  const rawContentState = data ? JSON.parse(data[0].descreption) : null;
+  const hashConfig = {
+    trigger: "#",
+    separator: " ",
+  };
+  const markup = draftToHtml(rawContentState, hashConfig);
   const detaile = {
     image1: data ? data[0].images[0] : null,
     image2: data ? data[0].images[1] : null,
@@ -15,7 +22,7 @@ function Modal({ data }) {
     subLinkTitle: "---",
     productName_fa: data ? data[0].name : null,
     productName_en: "شرکت مرغ مادر نمونه",
-    productDetaile: data ? data[0].descreption : null,
+    productDetaile: markup,
     price: data ? PN.convertEnToPe(PN.sliceNumber(data[0].price)) : null,
     btnTitle: "ثبت خرید",
     btnTitle2: "دانلود آنالیز خونی مادر",
@@ -49,7 +56,9 @@ function Modal({ data }) {
                 {detaile.productName_en}
               </h1>
               <p id={modalcssStyle["productDetaile"]}>
-                {detaile.productDetaile}
+                <td
+                  dangerouslySetInnerHTML={{ __html: detaile.productDetaile }}
+                />
               </p>
               <PlusMinusBtn />
               <div className={modalcssStyle["price"]}>

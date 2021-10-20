@@ -12,6 +12,8 @@
     "apexcharts": "^3.28.3",
     "axios": "^0.21.1",
     "babel-plugin-styled-components": "^1.13.2",
+    "draft-js": "^0.11.7",
+    "draftjs-to-html": "^0.9.1",
     "file-loader": "^6.2.0",
     "fs": "0.0.1-security",
     "next": "^11.1.2",
