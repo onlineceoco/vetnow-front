@@ -132,7 +132,7 @@ const Products = ({
       </div>
       {inView && (
         <div className={product_styles.CardContainer}>
-          <Card data={data} />
+          <Card data={data ? data : []} />
         </div>
       )}
       <h1 style={{ marginTop: "20px" }}>{titleNews}</h1>
